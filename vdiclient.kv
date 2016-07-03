@@ -1,0 +1,46 @@
+<_Widget>:
+    canvas.after:
+        Line:
+            rectangle: self.x+1,self.y+1,self.width-1,self.height-1
+            dash_offset: 5
+            dash_length: 3
+
+<FormTextInput@TextInput>:
+    multiline: False
+    write_tab: False
+    padding: [6, ( self.height - self.line_height ) / 2]
+    
+
+FloatLayout:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 30
+        size_hint: None, None
+        width: 500
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        rows: 3
+        Label:
+            text: 'login'
+            size_hint_y: None
+            height: 50
+        GridLayout:
+            rows: 2
+            cols: 2
+            spacing: 10
+            size_hint_y: None
+            Label:
+                text: 'username'
+            FormTextInput:
+                id: input_username
+            Label:
+                text: 'password'
+            FormTextInput:
+                id: input_password
+                password: True
+                allow_copy: False
+        Button:
+            text: 'login'
+            size_hint_y: None
+            height: 50
+            on_press: app.do_login(input_username, input_password)
+    
